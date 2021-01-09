@@ -1,0 +1,70 @@
+unmanaged implementation in class zbp_i_ewm_wup_d_dsapp unique;
+
+define behavior for ZI_EWM_WUP_D_DSAPP alias DockAppointment
+//late numbering
+lock master
+//authorization master
+etag ChangedOn
+{
+  create;
+  update;
+  delete;
+  association _AssignedSlot { create; }
+
+  action ConfirmAppointment result [1] $self;
+
+  field ( read only ) DbKey, Procstatus, StartTime, FinishTime, ChangedOn, ChangedBy, Docno;
+  field ( features : instance ) Note;
+  field ( mandatory ) Loadpoint, LpParent, Mtr, Transmeansid, ReqStartTime, ReqFinishTime;
+
+  mapping for /scwm/d_dsapp control zewm_s_x_d_dsapp
+  {
+    DbKey = db_key;
+    Loadpoint = loadpoint;
+    LpParent = lp_parent;
+    Docno = docno;
+    Mtr = mtr;
+    Carrier = carrier;
+    Transmeansid = transmeansid;
+    ReqStartTime = req_start_time;
+    ReqFinishTime = req_finish_time;
+    ReqLength = req_length;
+    RecurringInd = recurring_ind;
+    Category = category;
+    InYardLength = in_yard_length;
+    StagingInd = staging_ind;
+    AppType = app_type;
+    StartTime = start_time;
+    FinishTime = finish_time;
+    SlotRootKey = slot_root_key;
+    ScacCarr = scac_carr;
+    Motscode = motscode;
+    Driver = driver;
+    Capalloc = capalloc;
+    Carrcreaind = carrcreaind;
+    AppLength = app_length;
+    Procstatus = procstatus;
+    Note = note;
+    Refdocno = refdocno;
+    NumberPackages = number_packages;
+    ProdGrp = prod_grp;
+    LoadpointInd = loadpoint_ind;
+    PlCheckinTime = pl_checkin_time;
+
+  }
+}
+
+define behavior for ZI_EWM_WUP_D_DSSLA alias AssignedSlot
+implementation in class zbp_i_ewm_wup_d_dssla unique
+//late numbering
+lock dependent ( ParentKey = DbKey )
+//authorization dependent( <local_field_name> = <target_field_name> )
+//etag <field_name>
+{
+  create;
+  update;
+  delete;
+
+  field ( read only ) DbKey, ParentKey;
+  field ( mandatory ) Loadpoint, StartTime, FinishTime;
+}

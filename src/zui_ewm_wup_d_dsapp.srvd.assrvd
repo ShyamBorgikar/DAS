@@ -1,0 +1,8 @@
+@EndUserText.label: 'DAS app service'
+define service ZUI_EWM_WUP_D_DSAPP {
+  expose ZC_EWM_WUP_D_DSAPP as DockApoointment;
+  expose ZC_EWM_WUP_D_DSSLA as AssignedSlot;
+  expose ZC_EWM_WUP_D_DSREFDO as RefDocument;
+  expose ZI_EWM_WUP_DSAPP_PROCSTATUS as ProcessStatusTxt;
+  expose I_MeansOfTransportText as MeansOfTransport;
+}

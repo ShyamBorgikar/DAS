@@ -1,0 +1,30 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'AssignedSlot',
+                typeNamePlural: 'AssignedSlot',
+                title: { type: #STANDARD, label: 'Assigned Slot' } } }
+annotate view ZC_EWM_WUP_D_DSSLA with
+{
+  @UI.facet: [ { id:            'AssignedSlot',
+                 purpose:       #STANDARD,
+                 type:          #IDENTIFICATION_REFERENCE,
+                 label:         'Assigned Slot',
+                 position:      10 }  ]
+    //    DbKey;
+    //    ParentKey;
+  @UI: {  lineItem:       [ { position: 10 } ],
+      identification: [ { position: 10 } ] }
+  Loadpoint;
+  @UI: {  lineItem:       [ { position: 20 } ],
+      identification: [ { position: 20 } ] }
+  StartTime;
+  @UI: {  lineItem:       [ { position: 30 } ],
+      identification: [ { position: 30 } ] }
+  FinishTime;
+  //    SlotRootKey;
+  //    Capalloc;
+  /* Associations */
+  @UI.hidden: true
+  _DockAppointment;
+
+}

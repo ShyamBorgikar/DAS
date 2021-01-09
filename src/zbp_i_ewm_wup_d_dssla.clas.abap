@@ -1,0 +1,5 @@
+CLASS zbp_i_ewm_wup_d_dssla DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zi_ewm_wup_d_dsapp.
+ENDCLASS.
+
+CLASS zbp_i_ewm_wup_d_dssla IMPLEMENTATION.
+ENDCLASS.

@@ -1,0 +1,26 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'RefDocument',
+                typeNamePlural: 'Refdocuments',
+                title: { type: #STANDARD, label: 'Reference Documents' } } }
+annotate view ZC_EWM_WUP_D_DSREFDO with
+{
+  @UI.facet: [ { id:            'RefDocument',
+                  purpose:       #STANDARD,
+                  type:          #IDENTIFICATION_REFERENCE,
+                  label:         'Reference Document',
+                  position:      10 }  ]
+  //    DbKey;
+  //    ParentKey;
+  @UI: {  lineItem:       [ { position: 10 } ],
+        identification: [ { position: 10 } ] }
+  Refdocno;
+  @UI: {  lineItem:       [ { position: 20 } ],
+    identification: [ { position: 20 } ] }
+  Refdoccat;
+  //    Refbskey;
+  /* Associations */
+  @UI.hidden: true
+  _DockAppointment;
+
+}

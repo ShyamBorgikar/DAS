@@ -1,0 +1,17 @@
+projection;
+
+define behavior for ZC_EWM_WUP_D_DSAPP alias DockAppointment
+{
+  use create;
+  use update;
+  use delete;
+  use action ConfirmAppointment;
+  use association _ASSIGNEDSLOT { create; }
+}
+
+define behavior for ZC_EWM_WUP_D_DSSLA alias AssignedSlot
+{
+  use create;
+  use update;
+  use delete;
+}

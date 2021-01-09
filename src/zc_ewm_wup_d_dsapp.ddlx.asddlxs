@@ -1,0 +1,110 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: { typeName: 'Dock Appointment',
+                typeNamePlural: 'Dock Appointments',
+                title: { type: #STANDARD, label: 'Dock Apointments', value: 'Docno' } },
+
+  presentationVariant: [{ sortOrder: [{ by: 'CreatedOn', direction:  #DESC }] }] }
+annotate view ZC_EWM_WUP_D_DSAPP with
+{
+  @UI.facet: [ { id:              'DockAppointment',
+                     purpose:         #STANDARD,
+                     type:            #IDENTIFICATION_REFERENCE,
+                     label:           'Appointment Number',
+                     position:        10 },
+                   { id:              'AssignedSlot',
+                     purpose:         #STANDARD,
+                     type:            #LINEITEM_REFERENCE,
+                     label:           'Assigned Slot',
+                     position:        20,
+                     targetElement:   '_AssignedSlot'},
+                     { id:              'RefDocument',
+                     purpose:         #STANDARD,
+                     type:            #LINEITEM_REFERENCE,
+                     label:           'Reference Document',
+                     position:        30,
+                     targetElement:   '_RefDocument'} ]
+
+
+  //  @UI:{ identification: [{ position: 1, label: 'Loading Point' }] }
+  @UI: {  lineItem:       [ { position: 20 } ],
+            identification: [ { position: 20 } ] }
+  Loadpoint;
+  @UI:{ identification: [{ position: 5, label: 'Start Time' }] }
+  StartTime;
+  @UI:{ identification: [{ position: 6, label: 'Finish Time' }] }
+  FinishTime;
+  //    SlotRootKey;
+  @UI: {  lineItem:       [ { position: 10 } ],
+          identification: [ { position: 10 } ] }
+  Docno;
+  @UI:{ identification: [{ position: 7, label: 'Carrirer' }] }
+  Carrier;
+  //    ScacCarr;
+  @UI: {  lineItem:       [ { position: 20 } ],
+   identification: [ { position: 20 } ] }
+  Transmeansid;
+  @UI: {  lineItem:       [ { position: 40 } ],
+   identification: [ { position: 40 } ] }
+  Mtr;
+  //    Motscode;
+  @UI:{ identification: [{ position: 4, label: 'Driver' }] }
+  Driver;
+  //    Capalloc;
+  //    Carrcreaind;
+  //    AppLength;
+  @UI:{ identification: [{ position: 2, label: 'Request Start Time' }] }
+  ReqStartTime;
+  @UI:{ identification: [{ position: 3, label: 'Request Finish Time' }] }
+  ReqFinishTime;
+  //    ReqLength;
+  @UI: {  lineItem:       [ { position: 60,
+  //  value: 'Procstatus',
+   criticality: 'Criticality'  },
+     { type: #FOR_ACTION,
+    dataAction: 'ConfirmAppointment',
+    label: 'Confirm Appointment' }
+  ],
+        identification: [ { position: 60 } ] }
+  Procstatus;
+  //    AppType;
+  //    CheckinTime;
+  //    DockTime;
+  //    UndockTime;
+  //    CheckoutTime;
+  @UI: {  lineItem:       [ { position: 70 } ],
+        identification: [ { position: 70 } ] }
+  Note;
+  //    Refdocno;
+  //    LpParent;
+  //    NumberPackages;
+  //    ProdGrp;
+  @UI: {  lineItem:       [ { position: 80 } ],
+        identification: [ { position: 80 } ] }
+  Category;
+  //    LoadpointInd;
+  //    InYardLength;
+  //    RecurringInd;
+  //    StagingInd;
+  //    PlCheckinTime;
+  //    CreatedBy;
+  //    CreatedOn;
+  //  @UI: {  lineItem:       [ { position: 90 },
+  //                           { type: #FOR_ACTION, dataAction: 'ConfirmAppointment', label: 'Confirm Appointment' }
+  //                         ],
+  //         identification: [ { position: 90 },
+  //                           { type: #FOR_ACTION, dataAction: 'ConfirmAppointment', label: 'Confirm Appointment' }
+  //                         ] }
+  @UI: {  lineItem:       [ { position: 90 } ],
+     identification: [ { position: 90 } ] }
+  ChangedBy;
+  @UI: {  lineItem:       [ { position: 100 } ],
+   identification: [ { position: 100 } ] }
+  ChangedOn;
+  //    EewDsappRoot;
+  /* Associations */
+  @UI.hidden: true
+  _AssignedSlot;
+
+
+}
